@@ -1,32 +1,19 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "stdio.h"
+#include "stdlib.h"
+#include "stdint.h"
 
-# define LENGTH 30
-
-void
-nestedloop_body(int n)
+int main (int argc, char** argv)
 {
-    int a, b, c, d, e, f, x = 0;
-
-    for (a = 0; a < n; a++) {
-        for (b = 0; b < n; b++) {
-            for (c = 0; c < n; c++) {
-                for (d = 0; d < n; d++) {
-                    for (e = 0; e < n; e++) {
-                        for (f = 0; f < n; f++) {
-                            x += (a + b + c) * (d + e) * (x + 10);
-                        }
-                    }
-                }
-            }
+    int u = atoi(argv[1]);
+    int r = rand() % 10000;
+    int32_t a[10000] = {0};
+    for (int i = 0; i < 10000; i++) {
+        for (int j = 0; j < 100000; j++) {
+            a[i] = a[i] + j%u;
         }
+        a[i] += r;
     }
+    printf("%d\n", a[r]);
 
-    printf("x: %d\n", x);
-}
-
-int main(int argc, char **argv)
-{
-    nestedloop_body(LENGTH);
     return 0;
 }

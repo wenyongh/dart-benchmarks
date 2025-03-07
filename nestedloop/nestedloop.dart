@@ -1,28 +1,25 @@
-// 定义常量
-const int LENGTH = 30;
+import 'dart:io';
+import 'dart:math';
 
-// 定义嵌套循环函数
-void nestedLoopBody(int n) {
-  int a, b, c, d, e, f;
-  int x = 0;
-
-  for (a = 0; a < n; a++) {
-    for (b = 0; b < n; b++) {
-      for (c = 0; c < n; c++) {
-        for (d = 0; d < n; d++) {
-          for (e = 0; e < n; e++) {
-            for (f = 0; f < n; f++) {
-              x += (a + b + c) * (d + e) * (x + 10);
-            }
-          }
-        }
-      }
-    }
+void main(List<String> args) {
+  if (args.length < 1) {
+    print("请提供一个整数作为命令行参数。");
+    return;
   }
 
-  print('x: $x');
-}
+  int u = int.parse(args[0]);
 
-void main() {
-  nestedLoopBody(LENGTH);
+  Random random = Random();
+  int r = random.nextInt(10000);
+
+  List<int> a = List.filled(10000, 0);
+
+  for (int i = 0; i < 10000; i++) {
+    for (int j = 0; j < 100000; j++) {
+      a[i] = a[i] + j % u;
+    }
+    a[i] += r;
+  }
+
+  print(a[r]);
 }

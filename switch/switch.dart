@@ -12,7 +12,7 @@ void switchBody() {
     x[i] = i;
   }
 
-  for (int j = 0; j < ITERATIONS; j++) {
+  for (int j = 0; j < ITERATIONS * 10; j++) {
     for (int i = 0; i < length; i++) {
       switch (x[i]) {
         case 0:

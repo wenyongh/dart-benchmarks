@@ -14,7 +14,7 @@ ackermann(int M, int N)
 
 int main(int argc, char **argv)
 {
-    int res = ackermann(3, 10);
-    printf("##ackerman(3, 10) = %d\n", res);
+    int res = ackermann(3, 12);
+    printf("##ackerman(3, 12) = %d\n", res);
     return 0;
 }

@@ -18,7 +18,7 @@ switch_body()
     }
 
     int j;
-    for (j = 0; j < ITERATIONS; j++) {
+    for (j = 0; j < ITERATIONS * 10; j++) {
         for (i = (size_t) 0U; i < length; i++) {
             switch (x[i]) {
             case 0:

@@ -38,11 +38,11 @@ do
 
     echo "run $t with native .."
     echo -en "\t" >> $REPORT
-    $TIME -f "real-%e-time" ./${t} 2>&1 | grep "real-.*-time" | awk -F '-' '{ORS=""; print $2}' >> $REPORT
+    $TIME -f "real-%e-time" ./${t} 1234 2>&1 | grep "real-.*-time" | awk -F '-' '{ORS=""; print $2}' >> $REPORT
 
     echo "run $t with dart aot .."
     echo -en "\t" >> $REPORT
-    $TIME -f "real-%e-time" dartaotruntime ${t}.aot 2>&1 | grep "real-.*-time" | awk -F '-' '{ORS=""; print $2}' >> $REPORT
+    $TIME -f "real-%e-time" dartaotruntime ${t}.aot 1234 2>&1 | grep "real-.*-time" | awk -F '-' '{ORS=""; print $2}' >> $REPORT
 
     echo -en "\n" >> $REPORT
 done

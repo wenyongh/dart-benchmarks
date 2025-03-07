@@ -9,6 +9,6 @@ int ackermann(int M, int N) {
 }
 
 void main() {
-  int res = ackermann(3, 10);
-  print('##ackerman(3, 10) = $res');
+  int res = ackermann(3, 12);
+  print('##ackerman(3, 12) = $res');
 }
