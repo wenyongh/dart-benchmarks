@@ -30,7 +30,7 @@ echo "Start to run cases, the result is written to report.txt"
 
 #run benchmarks
 cd $OUT_DIR
-echo -en "\t\t\t\t\t  clang\tdart-aot\n" >> $REPORT
+echo -en "\t\t\t\t\t  clang\tswift\tdart-aot\n" >> $REPORT
 
 for t in $CASES
 do
@@ -40,9 +40,13 @@ do
     echo -en "\t" >> $REPORT
     $TIME -f "real-%e-time" ./${t} 1234 2>&1 | grep "real-.*-time" | awk -F '-' '{ORS=""; print $2}' >> $REPORT
 
+    echo "run $t with swift .."
+    echo -en "\t" >> $REPORT
+    $TIME -f "real-%e-time" ./${t}_swift 1234 2>&1 | grep "real-.*-time" | awk -F '-' '{ORS=""; print $2}' >> $REPORT
+
     echo "run $t with dart aot .."
     echo -en "\t" >> $REPORT
-    $TIME -f "real-%e-time" dartaotruntime ${t}.aot 1234 2>&1 | grep "real-.*-time" | awk -F '-' '{ORS=""; print $2}' >> $REPORT
+    $TIME -f "real-%e-time" dartaotruntime ${t}_dart_aot 1234 2>&1 | grep "real-.*-time" | awk -F '-' '{ORS=""; print $2}' >> $REPORT
 
     echo -en "\n" >> $REPORT
 done
